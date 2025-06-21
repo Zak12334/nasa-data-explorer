@@ -93,8 +93,6 @@ function App() {
         />
       )}
 
-      <p className="explanation">{apodData.explanation}</p>
-
       {apodData.hdurl && (
         <a
           href={apodData.hdurl}
@@ -105,8 +103,12 @@ function App() {
           View HD Version
         </a>
       )}
-    </main>
+
+      <p className="explanation">{apodData.explanation}</p>
+    </main >
   );
+
+
 
   const renderNEO = () => {
     if (!neoData) return <div className="loading">Loading asteroid data...</div>;

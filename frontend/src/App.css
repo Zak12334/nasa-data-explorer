@@ -1,8 +1,15 @@
 /* Base styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   background: #0a0a0f;
   color: white;
   min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .App-header {
@@ -12,8 +19,14 @@
 }
 
 .App-header h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 1.8rem;
+  }
 }
 
 /* Navigation */
@@ -32,10 +45,13 @@
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .nav-tabs button:hover {
   background: rgba(255, 255, 255, 0.2);
+
 }
 
 .nav-tabs button.active {
@@ -53,7 +69,7 @@
 }
 
 .apod-container h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   background: linear-gradient(45deg, #667eea, #f093fb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -61,17 +77,33 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .apod-container h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .apod-image,
 .apod-video {
   width: 100%;
-  max-width: 900px;
-  height: 600px;
-  object-fit: cover;
+  max-width: 800px;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
   border-radius: 15px;
   box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
-  margin: 2rem auto;
+  margin: 1rem auto;
   display: block;
   border: none;
+}
+
+@media (max-width: 768px) {
+
+  .apod-image,
+  .apod-video {
+    max-width: 95%;
+    max-height: 300px;
+  }
 }
 
 .explanation {
@@ -84,14 +116,16 @@
 
 .hd-link,
 .full-res-link {
-  display: inline-block;
-  margin-top: 1rem;
+  display: block;
+  margin: 1rem auto;
   padding: 0.8rem 1.5rem;
   background: linear-gradient(45deg, #667eea, #f093fb);
   color: white;
   text-decoration: none;
   border-radius: 10px;
   transition: transform 0.3s ease;
+  text-align: center;
+  width: fit-content;
 }
 
 .hd-link:hover,
@@ -112,7 +146,7 @@
 .neo-container h2,
 .mars-container h2 {
   font-size: 2.5rem;
-  background: linear-gradient(45deg, #667eea, #feca57);
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
@@ -140,7 +174,7 @@
 }
 
 .stat-card.hazardous h3 {
-  color: #667eea;
+  color: #ff6b6b;
 }
 
 .neo-item {
@@ -152,7 +186,7 @@
 }
 
 .neo-item.hazardous {
-  border-left-color: #667eea;
+  border-left-color: #ff6b6b;
 }
 
 .neo-item h4 {
@@ -161,7 +195,7 @@
 }
 
 .hazard-badge {
-  background: #667eea;
+  background: #ff6b6b;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -184,7 +218,7 @@
 }
 
 .pagination-btn {
-  background: linear-gradient(45deg, #667eea, #ff8e53);
+  background: linear-gradient(45deg, #ff6b6b, #ff8e53);
   border: none;
   color: white;
   padding: 0.8rem 1.5rem;
