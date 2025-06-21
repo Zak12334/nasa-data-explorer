@@ -1,0 +1,85 @@
+
+# NASA Data Explorer
+
+Full-stack web application showcasing NASA's space data through an interactive interface. Built with React frontend and Node.js backend, featuring three main sections: Astronomy Picture of the Day, Near Earth Objects tracking, and Mars rover photos.
+
+Author: Zak Osman
+
+## Features
+
+- **APOD**: Daily space imagery with HD downloads and detailed explanations
+- **Near Earth Objects**: Real-time asteroid tracking with hazard assessment
+- **Mars Photos**: Rover photography gallery with pagination and modal viewing
+
+## Tech Stack
+
+- **Frontend**: React, Axios, CSS3
+- **Backend**: Node.js, Express
+- **APIs**: NASA Open Data API (APOD, NeoWs, Mars Rover Photos)
+
+## Setup
+
+### Prerequisites
+- Node.js (v14+)
+- NASA API key from [api.nasa.gov](https://api.nasa.gov/)
+
+### Installation
+
+1. **Clone repository**
+```bash
+git clone https://github.com/Zak12334/nasa-data-explorer.git
+cd nasa-data-explorer
+```
+
+2. **Backend setup**
+```bash
+cd backend
+npm install
+```
+
+Create `.env` file:
+```
+NASA_API_KEY=your_nasa_api_key_here
+PORT=5000
+```
+
+3. **Frontend setup**
+```bash
+cd ../frontend
+npm install
+```
+
+4. **Run application**
+
+Terminal 1 (Backend):
+```bash
+cd backend
+npm start
+```
+
+Terminal 2 (Frontend):
+```bash
+cd frontend
+npm start
+```
+
+Application runs at `http://localhost:3000`
+
+## Project Structure
+
+```
+nasa-data-explorer/
+├── frontend/          # React application
+├── backend/           # Express server
+└── README.md
+```
+
+## API Endpoints
+
+- `GET /api/apod` - Astronomy Picture of the Day
+- `GET /api/neo` - Near Earth Objects data
+- `GET /api/mars-photos` - Mars rover photos
+
+## License
+
+MIT License
