@@ -69,9 +69,26 @@ Application runs at `http://localhost:3000`
 
 ```
 nasa-data-explorer/
-├── frontend/          # React application
-├── backend/           # Express server
-└── README.md
+├── frontend/
+│   ├── public/
+│   │   ├── index.html
+│   │   └── favicon.ico
+│   ├── src/
+│   │   ├── App.js
+│   │   ├── App.css
+│   │   ├── index.js
+│   │   └── index.css
+│   ├── package.json
+│   └── package-lock.json
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   │   └── api.js
+│   ├── package.json
+│   ├── package-lock.json
+│   └── .env
+├── README.md
+└── .gitignore
 ```
 
 ## API Endpoints
