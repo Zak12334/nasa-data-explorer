@@ -44,12 +44,23 @@ app.get('/api/mars-photos', async (req, res) => {
 
         console.log('Fetching Mars photos for:', rover, 'on', earth_date);
         const response = await axios.get(url);
+
+        // Fix image URLs to use HTTPS
+        if (response.data && response.data.photos) {
+            response.data.photos.forEach(photo => {
+                if (photo.img_src && photo.img_src.startsWith('http://')) {
+                    photo.img_src = photo.img_src.replace('http://', 'https://');
+                }
+            });
+        }
+
         res.json(response.data);
     } catch (error) {
         console.error('Mars Error:', error.response?.data || error.message);
         res.status(500).json({ error: 'Failed to fetch Mars rover photos' });
     }
 });
+
 
 // Get Near Earth Objects
 app.get('/api/neo', async (req, res) => {
