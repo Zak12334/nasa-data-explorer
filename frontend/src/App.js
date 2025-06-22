@@ -12,6 +12,8 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const photosPerPage = 12;
+  const API_URL = process.env.REACT_APP_API_URL || '';
+
 
   // Load APOD data on first load
   useEffect(() => {
@@ -23,7 +25,7 @@ function App() {
 
     try {
       setLoading(true);
-      const response = await axios.get('/api/apod');
+      const response = await axios.get(`${API_URL}/api/apod`);
       setApodData(response.data);
       setError(null);
     } catch (err) {
