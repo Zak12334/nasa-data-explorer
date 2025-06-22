@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
 
+const API_URL = process.env.REACT_APP_API_URL || '';
+
 function App() {
   const [apodData, setApodData] = useState(null);
   const [neoData, setNeoData] = useState(null);
@@ -12,12 +14,11 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const photosPerPage = 12;
-  const API_URL = process.env.REACT_APP_API_URL || '';
-
 
   // Load APOD data on first load
   useEffect(() => {
     fetchAPOD();
+    // eslint-disable-next-line
   }, []);
 
   const fetchAPOD = async () => {
@@ -40,10 +41,11 @@ function App() {
 
     try {
       setLoading(true);
-      const response = await axios.get('/api/neo');
+      const response = await axios.get(`${API_URL}/api/neo`);
       setNeoData(response.data);
       setError(null);
     } catch (err) {
+      setNeoData({ near_earth_objects: {}, element_count: 0 }); // fallback shape
       setError('Failed to fetch Near Earth Objects');
     } finally {
       setLoading(false);
@@ -55,7 +57,7 @@ function App() {
 
     try {
       setLoading(true);
-      const response = await axios.get('/api/mars-photos');
+      const response = await axios.get(`${API_URL}/api/mars-photos`);
       setMarsData(response.data);
       setError(null);
     } catch (err) {
@@ -73,6 +75,9 @@ function App() {
     if (tab === 'mars' && !marsData) {
       fetchMars();
       setCurrentPage(1); // Reset to first page
+    }
+    if (tab === 'apod' && !apodData) {
+      fetchAPOD();
     }
   };
 
@@ -110,15 +115,13 @@ function App() {
     </main >
   );
 
-
-
   const renderNEO = () => {
-    if (!neoData) return <div className="loading">Loading asteroid data...</div>;
+    if (!neoData || !neoData.near_earth_objects) return <div className="loading">Loading asteroid data...</div>;
 
     const today = new Date().toISOString().split('T')[0];
-    const todayObjects = neoData.near_earth_objects[today] || [];
+    const todayObjects = (neoData.near_earth_objects[today] || []);
 
-    const totalObjects = neoData.element_count;
+    const totalObjects = neoData.element_count || 0;
     const hazardousObjects = todayObjects.filter(obj => obj.is_potentially_hazardous_asteroid);
 
     return (
