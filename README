@@ -1,23 +1,36 @@
-
 # NASA Data Explorer
 
-Full-stack web application showcasing NASA's space data through an interactive interface. Built with React frontend and Node.js backend, featuring three main sections: Astronomy Picture of the Day, Near Earth Objects tracking, and Mars rover photos.
+Full-stack web application showcasing NASA's space data through an interactive interface. Built with a React frontend and Node.js/Express backend, featuring three main sections: Astronomy Picture of the Day, Near Earth Objects tracking, and Mars rover photos.
 
 Author: Zak Osman
 
+---
+
+## Live Demo
+
+- Frontend: [https://nasa-data-explorer-six.vercel.app](https://nasa-data-explorer-six.vercel.app)
+- Backend API (for testing): [https://nasa-data-explorer-ta7o.onrender.com](https://nasa-data-explorer-ta7o.onrender.com)
+- Source code: [https://github.com/Zak12334/nasa-data-explorer](https://github.com/Zak12334/nasa-data-explorer)
+
+---
+
 ## Features
 
-- **APOD**: Daily space imagery with HD downloads and detailed explanations
-- **Near Earth Objects**: Real-time asteroid tracking with hazard assessment
-- **Mars Photos**: Rover photography gallery with pagination and modal viewing
+- Astronomy Picture of the Day: Daily space imagery with HD downloads and detailed explanations
+- Near Earth Objects: Real-time asteroid tracking with hazard assessment
+- Mars Photos: Rover photography gallery with pagination and modal viewing
+
+---
 
 ## Tech Stack
 
-- **Frontend**: React, Axios, CSS3
-- **Backend**: Node.js, Express
-- **APIs**: NASA Open Data API (APOD, NeoWs, Mars Rover Photos)
+- Frontend: React, Axios, CSS3
+- Backend: Node.js, Express
+- APIs: NASA Open Data API (APOD, NeoWs, Mars Rover Photos)
 
-## Setup
+---
+
+## Local Setup
 
 ### Prerequisites
 - Node.js (v14+)
@@ -25,77 +38,75 @@ Author: Zak Osman
 
 ### Installation
 
-1. **Clone repository**
-```bash
-git clone https://github.com/Zak12334/nasa-data-explorer.git
-cd nasa-data-explorer
-```
+1. Clone repository
+    ```bash
+    git clone https://github.com/Zak12334/nasa-data-explorer.git
+    cd nasa-data-explorer
+    ```
 
-2. **Backend setup**
-```bash
-cd backend
-npm install
-```
+2. Backend setup
+    ```bash
+    cd backend
+    npm install
+    ```
+    Create a `.env` file in `/backend`:
+    ```
+    NASA_API_KEY=your_nasa_api_key_here
+    PORT=5000
+    ```
 
-Create `.env` file:
-```
-NASA_API_KEY=your_nasa_api_key_here
-PORT=5000
-```
+3. Frontend setup
+    ```bash
+    cd ../frontend
+    npm install
+    ```
+    Create a `.env` file in `/frontend`:
+    ```
+    REACT_APP_API_URL=http://localhost:5000
+    ```
 
-3. **Frontend setup**
-```bash
-cd ../frontend
-npm install
-```
+4. Run application
 
-4. **Run application**
+    - Terminal 1 (Backend):
+      ```bash
+      cd backend
+      npm start
+      ```
 
-Terminal 1 (Backend):
-```bash
-cd backend
-npm start
-```
+    - Terminal 2 (Frontend):
+      ```bash
+      cd frontend
+      npm start
+      ```
 
-Terminal 2 (Frontend):
-```bash
-cd frontend
-npm start
-```
+    Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-Application runs at `http://localhost:3000`
+---
 
 ## Project Structure
 
-```
 nasa-data-explorer/
 ├── frontend/
-│   ├── public/
-│   │   ├── index.html
-│   │   └── favicon.ico
-│   ├── src/
-│   │   ├── App.js
-│   │   ├── App.css
-│   │   ├── index.js
-│   │   └── index.css
-│   ├── package.json
-│   └── package-lock.json
+│ ├── public/
+│ ├── src/
+│ ├── package.json
+│ └── .env
 ├── backend/
-│   ├── server.js
-│   ├── routes/
-│   │   └── api.js
-│   ├── package.json
-│   ├── package-lock.json
-│   └── .env
+│ ├── server.js
+│ ├── package.json
+│ └── .env
 ├── README.md
 └── .gitignore
-```
+
+---
 
 ## API Endpoints
 
-- `GET /api/apod` - Astronomy Picture of the Day
-- `GET /api/neo` - Near Earth Objects data
-- `GET /api/mars-photos` - Mars rover photos
+- GET /api/apod – Astronomy Picture of the Day
+- GET /api/neo – Near Earth Objects data
+- GET /api/mars-photos – Mars rover photos
+
+---
 
 ## License
 
