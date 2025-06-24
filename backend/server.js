@@ -32,7 +32,7 @@ app.get('/api/apod', async (req, res) => {
     }
 });
 
-// Get Mars Rover Photos - Updated for recent photos
+// Get Mars Rover Photos 
 app.get('/api/mars-photos', async (req, res) => {
     try {
         const { earth_date = '2024-01-15', rover = 'perseverance', camera } = req.query;
